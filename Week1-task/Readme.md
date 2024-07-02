@@ -30,5 +30,8 @@ This project displays a random quote of the day and allows users to search for q
 <img width="956" alt="image" src="https://github.com/Nitsinghtomar/Techplement/assets/134151806/c82a0aa3-b901-422a-8b8e-786fcf133184">
 
 
+<img width="953" alt="image" src="https://github.com/Nitsinghtomar/Techplement/assets/134151806/68e3973c-f676-4ef9-b7bc-7d1e74008f0e">
+
+
 
 

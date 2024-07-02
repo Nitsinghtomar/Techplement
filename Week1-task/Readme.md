@@ -13,11 +13,11 @@ This project displays a random quote of the day and allows users to search for q
 
 1. Clone the repository:
 
-2. Install dependencies:
+2. Install dependencies: (npm install)
 
-3. Start MongoDB:
+3. Start MongoDB:(mongod)
  
-4. Start the server:
+4. Start the server:(node server.js)
    
 ## Usage
 

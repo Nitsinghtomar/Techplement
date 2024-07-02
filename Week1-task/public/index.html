@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote of the Day</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .quote-container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            max-width: 600px;
+            width: 100%;
+        }
+        .quote-text {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        .quote-author {
+            font-size: 1.2em;
+            color: #555;
+        }
+        .search-container {
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 600px;
+        }
+        .search-container input {
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: calc(100% - 80px);
+            margin-right: 10px;
+        }
+        .search-container button {
+            padding: 10px 20px;
+            border-radius: 4px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        .search-container button:hover {
+            background-color: #0056b3;
+        }
+        #search-results {
+            width: 100%;
+            max-width: 600px;
+            overflow-y: auto; /* Add scrollbar if needed */
+            max-height: calc(100vh - 250px); /* Limit height */
+        }
+        #search-results .quote-container {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quote-container">
+        <div id="quote-text" class="quote-text"></div>
+        <div id="quote-author" class="quote-author"></div>
+    </div>
+    <div class="search-container">
+        <input type="text" id="author-input" placeholder="Search by author">
+        <button onclick="searchQuotes()">Search</button>
+    </div>
+    <div id="search-results"></div>
+
+    <script>
+        async function fetchQuote() {
+            try {
+                const response = await fetch('/api/quote');
+                const data = await response.json();
+                document.getElementById('quote-text').innerText = data.content;
+                document.getElementById('quote-author').innerText = `- ${data.author}`;
+            } catch (error) {
+                console.error('Error fetching quote:', error);
+            }
+        }
+
+        async function searchQuotes() {
+            const author = document.getElementById('author-input').value.trim();
+            if (!author) {
+                alert('Please enter an author name');
+                return;
+            }
+            try {
+                const response = await fetch(`/api/quotes/${author}`);
+                const data = await response.json();
+                const resultsContainer = document.getElementById('search-results');
+                resultsContainer.innerHTML = ''; // Clear previous results
+                if (data.length === 0) {
+                    resultsContainer.innerHTML = '<p>No quotes found for this author.</p>';
+                } else {
+                    data.forEach(quote => {
+                        const quoteElement = document.createElement('div');
+                        quoteElement.classList.add('quote-container');
+                        quoteElement.innerHTML = `<div class="quote-text">${quote.text}</div><div class="quote-author">- ${quote.author}</div>`;
+                        resultsContainer.appendChild(quoteElement);
+                    });
+                }
+            } catch (error) {
+                console.error('Error fetching quotes:', error);
+            }
+        }
+
+        fetchQuote();
+    </script>
+</body>
+</html>

@@ -25,6 +25,9 @@ This project displays a random quote of the day and allows users to search for q
 - The homepage displays a random quote.
 - Enter an author's name in the search input and click "Search" to view quotes by that author.
 
+## Here are the screenshots of the webpage
+
+<img width="956" alt="image" src="https://github.com/Nitsinghtomar/Techplement/assets/134151806/c82a0aa3-b901-422a-8b8e-786fcf133184">
 
 
 

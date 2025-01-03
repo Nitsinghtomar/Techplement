@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Main Screen -->
+    <div id="main-screen" class="container">
+        <h1>Welcome to the Quiz</h1>
+        <button id="start-quiz-btn" class="btn">Start Quiz</button>
+        <button id="guest-btn" class="btn">Continue as Guest</button>
+        <button id="sign-in-btn" class="btn">Sign In</button>
+    </div>
+
+    <!-- Sign In Screen -->
+    <div id="sign-in-screen" class="container hidden">
+        <h2>Sign In</h2>
+        <input type="text" id="user-name" placeholder="Enter your name" class="btn">
+        <button id="submit-name-btn" class="btn">Submit</button>
+        <button id="back-btn" class="btn">Back</button>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quiz-screen" class="container hidden">
+        <h2 id="question-number"></h2>
+        <p id="question" class="question"></p>
+        <div id="answers" class="answers"></div>
+        <button id="next-btn" class="btn hidden">Next Question</button>
+    </div>
+
+    <!-- Scoreboard Screen -->
+    <div id="scoreboard-screen" class="container hidden">
+        <h2>Your Score</h2>
+        <p id="final-score" class="scoreboard"></p>
+        <button id="exit-btn" class="btn">Exit</button>
+    </div>
+
+    <!-- Previous Results -->
+    <div id="previous-results" class="container"></div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
